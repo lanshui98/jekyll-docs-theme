@@ -2,58 +2,30 @@
 layout: full
 homepage: true
 disable_anchors: true
-description: Power estimation tool for Spatial transcriptomics data
+description: Power Estimation Tool for Spatial Transcriptomics Data
 ---
 
 <div class="row">
-<div class="col-lg-6" markdown="1">
 
 ## Installation
 {:.mt-lg-0}
 
-This theme is designed to work both as a Gem or as a remote theme, meaning we officially support GitHub Pages.
+In R or Rstudio
+```
+# install devtools if necessary
+install.packages('devtools')
 
-### Gem
+# install the PoweREST package
+devtools::install_github('lanshui98/PoweREST')
 
-Add this line to your Jekyll site's Gemfile:
-
-```ruby
-gem "jekyll-docs-theme"
+# load package
+library(PoweREST)
 ```
 
-And then enable and use the theme in your Jekyll site via its `_config.yml`.
-
-```yaml
-theme: jekyll-docs-theme
-```
-
-### GitHub Pages
-
-And add this line to your Jekyll site's `_config.yml`:
-
-```yaml
-remote_theme: allejo/jekyll-docs-theme@v{{ site.project.version }}
-```
-
-</div>
-<div class="col-lg-6" markdown="1">
-
-## Features
+## Introduction
 {:.mt-lg-0}
 
-Despite being a mediocre theme, we've got a features that we're especially proud of and dedicate a lot of our time to making sure they work as expected.
-
-### Graceful Degradation
-
-This theme uses as little JavaScript as possible. All of our anchors and table of contents are generated at build time. Any features that rely on JavaScript have fallbacks for graceful degradation. It's how the web should be nowadays.
-
-### Heavily Customizable
-
-A lot of parts in these theme consist of empty Jekyll includes that are designed to be overridden by website owners. Inject your custom code easily to any part of the website!
-
-### Dark Mode
-
-We all know that dark mode makes you a better human. This theme supports a dark mode based on each user's preference.
+PoweREST is R package for the power analysis of detecting differential expressed genes between two conditions using 10X Visium spatial transcriptomics (ST). It enables the user to estimate the power or sample size needed for a 10X Visium ST experiment with and without prior dataset available by depicting how the study power is determined by three key parameters: (i) the number of biological replicates; (ii) the percentage of spots where the gene is detected in both groups; (iii) the log-fold change in average expression between two groups. PoweREST relies fully upon non-parametric modelling techniques but under biologically meaningful constraints which is extremely suitable for complex ST samples. The tool has been evaluated upon data from different tissue samples with promising and robust results.
 
 </div>
 </div>
