@@ -6,6 +6,8 @@ description: Power Estimation Tool for Spatial Transcriptomics Data
 ---
 
 ## PoweREST
+![iDEA\_pipeline](Figure1.jpg)
+
 {:.mt-lg-0}
 
 ## Installation
