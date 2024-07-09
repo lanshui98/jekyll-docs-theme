@@ -5,8 +5,6 @@ disable_anchors: true
 description: Power Estimation Tool for Spatial Transcriptomics Data
 ---
 
-<div class="row">
-
 ## Installation
 {:.mt-lg-0}
 
