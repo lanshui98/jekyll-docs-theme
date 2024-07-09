@@ -1,18 +1,17 @@
 ---
 layout: page
-title: Theme Configuration
+title: Example analysis
 ---
 
-This project can be configured to look and behave differently by toggling and setting options in your `_config.yml` file. All these options are optional and have defaults set in place if any of them are are not set.
+This tutorial is the example analysis with PoweREST on human intraductal papillary mucinous neoplasms (IPMN) data from [GSE233254]("https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi").
 
-## Project
+## Required input data
 
-The project object can be specified with information related to the software this; this information will appear on the homepage's jumbotron area.
+`PoweREST` requires 10X spatial transcriptomics data in `Seurat` format.
+The example data for runing the tutorial can be downloaded in this [page]()
 
-```yaml
-project:
-  version: 1.0.0
-  download_url: https://github.com/USER/PROJECT/releases
+```r
+library(PoweREST)
 ```
 
 | Field          | Description                         |
