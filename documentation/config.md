@@ -10,34 +10,34 @@ This tutorial is the example analysis with PoweREST on human intraductal papilla
 `PoweREST` requires 10X spatial transcriptomics data in `Seurat` format.
 The example data for runing the tutorial can be downloaded in this [page]()
 
+## Load the package and data
 ```r
 library(PoweREST)
+three_areas <- readRDS("~/your_path_to_GSE233293_scMC.all.3areas.final")
+Idents(three_areas)
+```
+Levels: Peri Juxta Epi
+The dataset has three histologically directed spot selection of epilesional, juxtalesional, and perilesional areas. We would like to perform the power estimation upon one of the three areas.
+
+## Preprocess data
+```r
+# Split the ST data by areas
+SeuratObject_splitlist<-SplitObject(three_areas, split.by = "ident")
+# The original dataset has three cancer subtypes. According to the paper, 'HG' and 'IPMNs' are combined into one 'HR' (high-risk) group
+for (i in 1:length(SeuratObject_splitlist)) {
+  SeuratObject_splitlist[[i]][['Condition']]<-ifelse(SeuratObject_splitlist[[i]][['Type']]=='LG','LG','HR')
+}
+
+for (i in 1:length(SeuratObject_splitlist)) {
+  Idents(SeuratObject_splitlist[[i]])<-"Condition"
+}
 ```
 
-| Field          | Description                         |
-|:---------------|:------------------------------------|
-| `version`      | The current version of the software |
-| `download_url` | The URL to the current download     |
-
-## Licenses
-
-The license object accepts four fields regarding information about the licensing of your software and documentation.
-
-```yaml
-license:
-  software: MIT License
-  software_url: http://opensource.org/licenses/MIT
-
-  docs: CC BY 3.0
-  docs_url: http://creativecommons.org/licenses/by/3.0/
+## Power estimation though bootstrapping
+```r
+Peri<-SeuratObject_splitlist[[1]]
+result<-PoweREST(Peri,cond='Condition',replicates=5,spots_num=80)
 ```
-
-| Field          | Description                                                       |
-|:---------------|:------------------------------------------------------------------|
-| `software`     | The license the software is distributed under                     |
-| `software_url` | A URL to the license text for the license specified in `software` |
-| `docs`         | The license this documentation is distributed under               |
-| `docs_url`     | A URL to the license text for the license specified in `docs`     |
 
 ## Links
 
