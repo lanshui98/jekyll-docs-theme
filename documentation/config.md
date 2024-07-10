@@ -89,7 +89,7 @@ pred <- pred.powerest(b,xlim= c(0,6),ylim=c(0,1))
 ```r
 vis.powerest(pred,theta=-30,phi=30,color='heat',ticktype = "detailed",xlim=c(0,6),nticks=5)
 ```
-![vis 1](Rplot.png)
+<img src="Rplot.png" width=250>
 
 ### Create interactive visualization result
 
