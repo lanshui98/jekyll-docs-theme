@@ -89,11 +89,12 @@ pred <- pred.powerest(b,xlim= c(0,6),ylim=c(0,1))
 ```r
 vis.powerest(pred,theta=-30,phi=30,color='heat',ticktype = "detailed",xlim=c(0,6),nticks=5)
 ```
-<img src="Rplot.png" width=250>
+<img src="Rplot.png" width=300>
 
 ### Create interactive visualization result
 
 ```r
 plotly_powerest(pred,fig_title='Power estimation result')
 ```
-includeHTML("Rplot.html")
+<iframe src="Rplot.html" 
+        width="50%"></iframe>
