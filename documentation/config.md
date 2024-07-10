@@ -63,53 +63,37 @@ The default test in Seurat's `FindMarkers` is Wilcoxon test. Users can specify a
 result2<-PoweREST(Peri,cond='Condition',replicates=5,spots_num=80,iteration=100,test.use="t")
 ```
 ### Power estimation upon a subset of genes
-Users can also use `PoweREST_gene` and `PoweREST_subset` to perform the power estimation upon one gene or a subset of genes. But be carefull 
+Users can also use `PoweREST_gene` and `PoweREST_subset` to perform the power estimation upon one gene or a subset of genes. But be carefull when interpreting the results, since the power is based on the adjusted p-value after bonferroni correction.
+
+`PoweREST_gene` performs the power calculation upon one gene by specifying the gene name.
+```r
+one_gene<-PoweREST_gene(Peri,cond='Condition',replicates=5,spots_num=80,gene_name='MUC1',pvalue=0.00001)
+```
+
+`PoweREST_subset` performs the power calculation upon a subset of genes by specifying 'logfc.threshold' and 'min.pct' values.
+```r
+sub_genes<-PoweREST_subset(Peri,cond='Condition',replicates=5,spots_num=80,pvalue=0.05,logfc.threshold = 0.1,min.pct = 0.01)
+```
+
+## Fit power surface 
+Here, we utilized penalized splines under two-dimentional constraints to fit the power surface.
+```r
+# Fit the power surface for sample size=5 in each arm
+b<-fit_powerest(result$power,result$avg_logFC,result$avg_PCT)
+
+# Get the predition result
+pred <- pred.powerest(b,xlim= c(0,6),ylim=c(0,1))
+```
+
+## Visualize the surface
+```r
+vis.powerest(pred,theta=-30,phi=30,color='heat',ticktype = "detailed",xlim=c(0,6),nticks=5)
+```
 
 
-## Fit power surface
+### Create interactive visualization result
 
 ```r
-links:
-  header:
-    - title: GitHub
-      url: https://github.com/allejo/jekyll-docs-theme
-  footer:
-    - title: GitHub
-      url: https://github.com/allejo/jekyll-docs-theme
-    - title: Issues
-      url: https://github.com/allejo/jekyll-docs-theme/issues?state=open
+
 ```
-
-| Field   | Description                           |
-|:--------|:--------------------------------------|
-| `title` | The textual representation of the URL |
-| `url`   | The URL of the link                   |
-
-## UI
-
-The ui object will contain all the settings in regards to the aesthetics of the website
-
-```yaml
-ui:
-  header:
-    color1: "#080331"
-    color2: "#673051"
-    trianglify: true
-```
-
-| Field               | Description                                                               |
-|:--------------------|:--------------------------------------------------------------------------|
-| `color1` & `color2` | The two colors that will create the gradient of the page header           |
-| `trianglify`        | When set to true, the page header will be a generated triangular pattern  |
-
-## Analytics
-
-```yaml
-analytics:
-    google: UA-123456-1
-```
-
-| Field    | Description                                                                   |
-|:---------|:------------------------------------------------------------------------------|
-| `google` | The unique identifier for Google Analytics; typically looks like `U-123456-1` |
 
