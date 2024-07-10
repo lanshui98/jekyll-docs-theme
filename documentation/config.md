@@ -96,5 +96,4 @@ vis.powerest(pred,theta=-30,phi=30,color='heat',ticktype = "detailed",xlim=c(0,6
 ```r
 plotly_powerest(pred,fig_title='Power estimation result')
 ```
-{% include_relative Rplot.html %}
 [Rplot.html](https://github.com/lanshui98/powerest/blob/master/documentation/Rplot.html)
