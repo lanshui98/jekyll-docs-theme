@@ -1,7 +1,6 @@
 # PoweREST R package Tutorial
 
-This is the tutorial web page for `PoweREST` R package.
-[Web page](https://lanshui98.github.io/powerest)
+This is the tutorial [web page}(https://lanshui98.github.io/powerest) for `PoweREST` R package.
 
 ## License
 
