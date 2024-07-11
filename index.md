@@ -36,6 +36,7 @@ PoweREST is R package for the power analysis of detecting differential expressed
 ### Cite PoweREST
 
 ### Contact us
+If you have questions, feel free to leave messages on the github issues or contact me through email: lshui@mdanderson.org
 
 ### Acknowledgemen
 This work was in part funded by the Translational and Basic Science Research in Early Lesions ([TBEL](https://www.tbelprogram.org/index.html)) Program. This website is build based on [CARD's tutorial](https://yma-lab.github.io/CARD/) by Dr Ying Ma.
