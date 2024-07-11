@@ -8,7 +8,7 @@ This tutorial is the example analysis with PoweREST on human intraductal papilla
 ## Required input data
 
 `PoweREST` requires 10X spatial transcriptomics data in `Seurat` format.
-The example data for runing the tutorial can be downloaded [here]("https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE233293")
+The example data for runing the tutorial can be downloaded [here]("https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE233293").
 
 ## Load the package and data
 ```r
