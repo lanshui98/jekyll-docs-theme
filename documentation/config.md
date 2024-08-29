@@ -81,6 +81,9 @@ Here, we utilized penalized splines under two-dimentional constraints to fit the
 # Fit the power surface for sample size=5 in each arm
 b<-fit_powerest(result$power,result$avg_logFC,result$avg_PCT)
 
+#Diagnosis the result
+scam.check(b)
+
 # Get the predition result
 pred <- pred.powerest(b,xlim= c(0,6),ylim=c(0,1))
 ```
@@ -96,3 +99,30 @@ vis.powerest(pred,theta=-30,phi=30,color='heat',ticktype = "detailed",xlim=c(0,6
 plotly_powerest(pred,fig_title='Power estimation result')
 ```
 [Rplot.html](https://github.com/lanshui98/powerest/blob/master/documentation/Rplot.html)
+
+### Visualize two surfaces in one plot
+The following code uses the power estimation results of bootstraping resampled replicates ranging from 1 to 10.
+
+```r
+fig <- plotly_powerest(pred,fig_title='Power estimation result')
+fig <- fig %>% add_surface(x = pre2$x, y = pred2$y,z = pred2$z,type = "surface",colorscale='BrBG',opacity = 0.3)
+```
+This code can be used to inspect any crossings between surfaces.
+
+## Fit local power surface with XGBoost
+```r
+# Fit the local power surface of avg_log2FC_abs between 1 and 2
+avg_log2FC_abs_1_2<-dplyr::filter(power,avg_log2FC_abs>1 & avg_log2FC_abs<2)
+# Fit the model
+bst<-fit_XGBoost(power$power,avg_log2FC=power$avg_log2FC_abs,avg_PCT=power$mean_pct,replicates=power$sample_size)
+# Make predictions
+pred<-pred_XGBoost(bst,n.grid=30,xlim=c(0,1.5),ylim=c(0,0.1),replicates=3)
+```
+
+## Visualize the local power surface
+```r
+#2D version
+vis_XGBoost(pred,view='2D',legend_name='Power',xlab='avg_log2FC_abs',ylab='mean_pct')
+#3D version
+vis_XGBoost(pred,view='3D',legend_name='Power',xlab='avg_log2FC_abs',ylab='mean_pct')
+```
