@@ -4,7 +4,7 @@ name: PoweREST
 
 project:
   version: 1.0.0
-  download_url: https://github.com/allejo/jekyll-docs-theme/releases
+  download_url: https://github.com/lanshui98/PoweREST
   download_text: Download
 
 license:
@@ -19,12 +19,12 @@ links:
     - title: GitHub
       icon: github
       brand: true
-      url: https://github.com/allejo/jekyll-docs-theme
+      url: https://github.com/lanshui98/PoweREST
   homepage:
     - title: View on GitHub
       icon: github
       brand: true
-      url: https://github.com/allejo/jekyll-docs-theme
+      url: https://github.com/lanshui98/PoweREST
   footer:
     - title: GitHub
       icon: github
