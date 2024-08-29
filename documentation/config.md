@@ -92,7 +92,6 @@ vis.powerest(pred,theta=-30,phi=30,color='heat',ticktype = "detailed",xlim=c(0,6
 <img src="Rplot.png" width=300>
 
 ### Create interactive visualization result
-
 ```r
 plotly_powerest(pred,fig_title='Power estimation result')
 ```
