@@ -101,28 +101,46 @@ plotly_powerest(pred,fig_title='Power estimation result')
 [Rplot.html](https://github.com/lanshui98/powerest_tutorial/blob/master/documentation/Rplot.html)
 
 ### Visualize two surfaces in one plot
-The following code uses the [power estimation results](data/merge_long.csv) of bootstraping resampled replicates ranging from 1 to 10.
+The following code uses the pre-calculated [power estimation results](data/merge_long.csv) of bootstraping resampled replicates ranging from 1 to 10.
 
 ```r
-fig <- plotly_powerest(pred,fig_title='Power estimation result')
+power_values <- read.csv('./your_path_to_merge_long.csv')
+
+# Power values of replicates=3
+power1 <- dplyr::filter(power_values, sample_size==3)
+b1 <- fit_powerest(power1$power,power1$avg_log2FC,power1$mean_PCT)
+pred1 <- pred.powerest(b1,xlim= c(0,6),ylim=c(0,1))
+
+# Power values of replicates=4
+power2 <- dplyr::filter(power_values, sample_size==4)
+b2 <- fit_powerest(power2$power,power2$avg_log2FC,power2$mean_PCT)
+pred2 <- pred.powerest(b2,xlim= c(0,6),ylim=c(0,1))
+
+fig <- plotly_powerest(pred1,fig_title='Power estimation result')
 fig <- fig %>% add_surface(x = pre2$x, y = pred2$y,z = pred2$z,type = "surface",colorscale='BrBG',opacity = 0.3)
 ```
 This code can be used to inspect any crossings between surfaces.
 
 ## Fit local power surface with XGBoost
+XGBoost is used as a remedy when there are crossings between surfaces but is recommended to only fit the local power surface.
 ```r
-# Fit the local power surface of avg_log2FC_abs between 1 and 2
-avg_log2FC_abs_1_2<-dplyr::filter(power,avg_log2FC_abs>1 & avg_log2FC_abs<2)
+# Fit the local power surface of avg_log2FC_abs between 0 and 2
+avg_log2FC_abs_0_2<-dplyr::filter(power_values, avg_log2FC_absolute<2)
+
 # Fit the model
-bst<-fit_XGBoost(power$power,avg_log2FC=power$avg_log2FC_abs,avg_PCT=power$mean_pct,replicates=power$sample_size)
+bst<-fit_XGBoost(avg_log2FC_abs_0_2$power,
+                 avg_log2FC=avg_log2FC_abs_0_2$avg_log2FC_absolute,
+                 avg_PCT=avg_log2FC_abs_0_2$mean_pct,
+                 replicates= avg_log2FC_abs_0_2$sample_size)
+
 # Make predictions
-pred<-pred_XGBoost(bst,n.grid=30,xlim=c(0,1.5),ylim=c(0,0.1),replicates=3)
+pred_xgb<-pred_XGBoost(bst,n.grid=30,xlim=c(0,2),ylim=c(0,1),replicates=3)
 ```
 
 ## Visualize the local power surface
 ```r
 #2D version
-vis_XGBoost(pred,view='2D',legend_name='Power',xlab='avg_log2FC_abs',ylab='mean_pct')
+vis_XGBoost(pred_xgb,view='2D',legend_name='Power',xlab='avg_log2FC_abs',ylab='mean_pct')
 #3D version
-vis_XGBoost(pred,view='3D',legend_name='Power',xlab='avg_log2FC_abs',ylab='mean_pct')
+vis_XGBoost(pred_xgb,view='3D',legend_name='Power',xlab='avg_log2FC_abs',ylab='mean_pct')
 ```
