@@ -101,7 +101,7 @@ plotly_powerest(pred,fig_title='Power estimation result')
 [Rplot.html](https://github.com/lanshui98/powerest_tutorial/blob/master/documentation/Rplot.html)
 
 ### Visualize two surfaces in one plot
-The following code uses the power estimation results of bootstraping resampled replicates ranging from 1 to 10.
+The following code uses the [power estimation results](data/merge_long.csv) of bootstraping resampled replicates ranging from 1 to 10.
 
 ```r
 fig <- plotly_powerest(pred,fig_title='Power estimation result')
