@@ -98,7 +98,7 @@ vis.powerest(pred,theta=-30,phi=30,color='heat',ticktype = "detailed",xlim=c(0,6
 ```r
 plotly_powerest(pred,fig_title='Power estimation result')
 ```
-[Rplot.html](https://github.com/lanshui98/powerest/blob/master/documentation/Rplot.html)
+[Rplot.html](https://github.com/lanshui98/powerest_tutorial/blob/master/documentation/Rplot.html)
 
 ### Visualize two surfaces in one plot
 The following code uses the power estimation results of bootstraping resampled replicates ranging from 1 to 10.
