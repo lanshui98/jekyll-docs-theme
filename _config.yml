@@ -29,10 +29,10 @@ links:
     - title: GitHub
       icon: github
       brand: true
-      url: https://github.com/allejo/jekyll-docs-theme
+      url: https://github.com/lanshui98/PoweREST
     - title: Issues
       icon: bug
-      url: https://github.com/allejo/jekyll-docs-theme/issues?state=open
+      url: https://github.com/lanshui98/PoweREST/issues?state=open
 
 ui:
   mode: 'auto' # 'auto', 'dark', 'light'
