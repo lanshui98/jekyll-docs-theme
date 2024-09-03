@@ -42,6 +42,7 @@ PoweREST is R package for the power analysis of detecting differential expressed
 A graphical interface of a shiny app is at the webpage [PoweREST](https://lanshui.shinyapps.io/PoweREST/), which provides power estimations upon different pilot ST datasets.
 
 ### Cite PoweREST
+Lan Shui, Anirban Maitra, Ying Yuan, Ken Lau, Harsimran Kaur, Liang Li, Ziyi Li. bioRxiv 2024.08.30.610564; doi: https://doi.org/10.1101/2024.08.30.610564
 
 ### Contact us
 If you have questions, feel free to leave messages on the github issues or contact me through email: lshui@mdanderson.org
